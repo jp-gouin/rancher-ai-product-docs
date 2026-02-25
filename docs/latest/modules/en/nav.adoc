@@ -6,6 +6,7 @@ include::partial$variables.adoc[]
 ** xref:explanations/architecture.adoc[Architecture]
 * How-tos
 ** xref:how-tos/how-to-admin.adoc[Administrator how-tos]
+*** xref:how-tos/how-to-admin.adoc#ollama[Configure Ollama]
 *** xref:how-tos/how-to-admin.adoc#openai[Configure OpenAI]
 *** xref:how-tos/how-to-admin.adoc#gemini[Configure Gemini]
 *** xref:how-tos/how-to-admin.adoc#bedrock[Configure AWS Bedrock]
