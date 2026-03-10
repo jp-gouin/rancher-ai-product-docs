@@ -25,9 +25,9 @@ Use the following helm values to configure Ollama from the Agent helm chart:
 
 [source,yaml]
 ----
-activeLlm: "ollama"
+ollamaLlmModel: "gpt-oss:120b"
 ollamaUrl: "http://ollama:11434"
-llmModel: "gpt-oss:20b"
+activeLlm: "ollama"
 ----
 
 Update the chart:
@@ -58,9 +58,9 @@ Use the following helm values to configure OpenAI from the Agent helm chart:
 
 [source,yaml]
 ----
-llmModel: "gpt-4o"
 openaiLlmModel: "gpt-4o"
 openaiApiKey: "xxxxxxxxx"
+activeLlm: "openai"
 ----
 
 Update the chart:
@@ -105,9 +105,9 @@ Use the following helm values to configure Gemini from the Agent helm chart:
 
 [source,yaml]
 ----
-llmModel: "gemini-2.0-flash"
 geminiLlmModel: "gemini-2.0-flash"
 googleApiKey: "xxxxxxxxx"
+activeLlm: "gemini"
 ----
 
 Update the chart:
@@ -149,8 +149,8 @@ chart:
 
 [source,yaml]
 ----
-llmModel: "global.anthropic.claude-opus-4-5-20251101-v1:0"
 bedrockLlmModel: "global.anthropic.claude-opus-4-5-20251101-v1:0"
+activeLlm: "bedrock"
 awsBedrock:
   bearerToken: "xxxxxxxx"
   region: "us-east-1"
@@ -489,3 +489,53 @@ This Global role provide a very limited access to Rancher Manager.
 
 It grant access to Agent endpoint running in the local cluster. 
 ====
+
+[#airgap]
+== Air Gap installation
+
+Installing {project-name} in an air-gapped environment requires pre-fetching the necessary container images and Helm charts before moving them to your private registry and internal repository.
+
+=== UI Extension
+
+The {project-name} UI extension is part of the official Rancher Prime UI extensions. For detailed instructions on how to manage UI extensions in an air-gapped environment, please refer to the link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/integrations/rancher-extensions.html#_working_with_extensions_in_an_air_gapped_environment[Rancher Extensions Air-Gapped Documentation].
+
+=== Publishing Images and Charts
+
+To install the {project-name} agent and its dependencies, you must add the following container images to your `rancher-images.txt` file and publish them to your private registry following the link:https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/air-gapped/publish-images.html[Official Rancher Air-Gapped Publishing Guide]:
+
+* **AI Agent Image:** `ghcr.io/rancher/rancher-ai-agent:v0.1.2-alpha.30`
+* **MCP Server Image:** `ghcr.io/rancher/rancher-ai-mcp:v0.1.2-alpha.10`
+
+You also need to fetch the Helm chart for the agent:
+
+[source,bash]
+----
+helm repo add rancher-ai https://rancher.github.io/rancher-ai-agent
+helm pull rancher-ai/agent --version 1.0.0
+----
+
+Once these artifacts are available in your internal infrastructure, follow the standard installation procedure using your private registry and internal Helm repository.
+
+[#persistconversations]
+== Persist chat conversations
+
+Platform Administrators can persist chat conversations with {short-project-name} by using a PostgreSQL database. By default, conversation persistence is disabled.
+
+To enable persistence, update the `storage` section in your `values.yaml`:
+
+[source,yaml]
+----
+storage:
+  enabled: true
+  connectionString: "postgresql://[user[:password]@][host][:port]/[dbname][?param1=value1&...]"
+----
+
+The `connectionString` must follow the standard PostgreSQL URI format as described in the link:https://www.psycopg.org/psycopg3/docs/index.html[psycopg3 documentation].
+
+Update the chart with the new configuration:
+
+[source,bash]
+----
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+----
+
