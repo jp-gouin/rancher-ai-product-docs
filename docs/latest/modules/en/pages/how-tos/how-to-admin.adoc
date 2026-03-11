@@ -490,6 +490,28 @@ This Global role provide a very limited access to Rancher Manager.
 It grant access to Agent endpoint running in the local cluster. 
 ====
 
+[#mcp-read-only]
+== Rancher MCP read-only mode
+
+You can enable read-only mode for the Rancher MCP server to restrict the AI assistant's capabilities. In this mode, only tools that query Rancher are exposed and allowed.
+
+Any tools used to create or patch resources are disabled and cannot be used via {short-project-name}.
+
+To enable read-only mode, update the `mcp` section in your `values.yaml`:
+
+[source,yaml]
+----
+mcp:
+  readOnly: true
+----
+
+Update the chart with the new configuration:
+
+[source,bash]
+----
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+----
+
 [#airgap]
 == Air Gap installation
 
