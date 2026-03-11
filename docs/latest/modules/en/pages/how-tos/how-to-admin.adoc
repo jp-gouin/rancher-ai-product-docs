@@ -493,15 +493,15 @@ It grant access to Agent endpoint running in the local cluster.
 [#airgap]
 == Air Gap installation
 
-Installing {project-name} in an air-gapped environment requires pre-fetching the necessary container images and Helm charts before moving them to your private registry and internal repository.
+Installing {short-project-name} in an air-gapped environment requires pre-fetching the necessary container images and Helm charts before moving them to your private registry and internal repository.
 
 === UI Extension
 
-The {project-name} UI extension is part of the official Rancher Prime UI extensions. For detailed instructions on how to manage UI extensions in an air-gapped environment, please refer to the link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/integrations/rancher-extensions.html#_working_with_extensions_in_an_air_gapped_environment[Rancher Extensions Air-Gapped Documentation].
+The UI extension is part of the official Rancher Prime UI extensions. For detailed instructions on how to manage UI extensions in an air-gapped environment, please refer to the link:https://documentation.suse.com/cloudnative/rancher-manager/v2.13/en/integrations/rancher-extensions.html#_working_with_extensions_in_an_air_gapped_environment[Rancher Extensions Air-Gapped Documentation].
 
 === Publishing Images and Charts
 
-To install the {project-name} agent and its dependencies, you must add the following container images to your `rancher-images.txt` file and publish them to your private registry following the link:https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/air-gapped/publish-images.html[Official Rancher Air-Gapped Publishing Guide]:
+To install the agent and its dependencies, you must add the following container images to your `rancher-images.txt` file and publish them to your private registry following the link:https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/air-gapped/publish-images.html[Official Rancher Air-Gapped Publishing Guide]:
 
 * **AI Agent Image:** `ghcr.io/rancher/rancher-ai-agent:v0.1.2-alpha.30`
 * **MCP Server Image:** `ghcr.io/rancher/rancher-ai-mcp:v0.1.2-alpha.10`
