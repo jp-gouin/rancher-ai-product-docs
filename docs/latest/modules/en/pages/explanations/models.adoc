@@ -12,11 +12,11 @@ The following models are tested against the Rancher AI Agent and the Rancher MCP
 | Provider | Validated Models
 
 | Gemini
-a| * gemini-2.0-flash
-* gemini-2.0-flash-lite
-* gemini-2.5-pro
+a| * gemini-2.5-pro
 * gemini-2.5-flash
-* gemini-2.5-flash-lite
+* gemini-2.5-pro
+* gemini-3.1-flash-lite-preview
+* gemini-3.1-pro-preview
 
 | OpenAI
 a| * gpt-4o
@@ -34,6 +34,9 @@ a| * gpt-oss:20b
 
 | AWS Bedrock
 a| * global.anthropic.claude-opus-4-5-20251101-v1:0
+* anthropic.claude-opus-4-6
+* anthropic.claude-sonnet-4-6
+* anthropic.claude-haiku-4-5-20251001-v1:0
 |===
 
 [NOTE]
