@@ -58,7 +58,7 @@ you choose to deploy.
 | N/A
 
 | OpenAI Like provider
-| Azure Account, Evrok Think, ...
+| Azure Account, Evroc Think, ...
 | N/A
 |===
 
@@ -129,25 +129,15 @@ Open the Rancher Manager UI and navigate to the 'Extensions' page.
 +
 image::menubar-extension.png[Extension button in menu bar]
 +
-. Use the three-dot menu in the upper right and select 'Manage Repositories'.
+. Use the three-dot menu in the upper right and select 'Add Rancher Repositories'.
 +
-image::menu-manage-repo.png[Menu to manage repositories]
+image::rancher-repositories.png[Menu to manage Rancher Repositories]
 +
-. Click 'Create' to add the repository.
-. Configure the repository:
-   * **name**: `ai-assistant-ui`
-   * **target**: Git repository containing Helm chart or cluster template
-     definitions
-   * **index URL**: `https://github.com/rancher/rancher-ai-ui`
-   * **Git Branch**: `gh-pages`
+. Select  'Add Official Rancher Extensions Repository' to add the repository.
 +
-image::config-repo-branch.png[Repository create, using the gh-branch]
+image::add-extensions-repositories.png[Add Official Rancher Repository]
 +
-. Click 'Create'.
-. Wait for the `ai-assistant-ui` repository status to be Active.
-. Go back to the 'Extensions' page and select the 'Available' tab.
-+
-image::config-repo-available.png[Configure the available repository.]
+. Click  'Add'.
 +
 . Find the AI Assistant card and click 'Install'.
 . Select a version (or use the latest by default) and click 'Install'.
