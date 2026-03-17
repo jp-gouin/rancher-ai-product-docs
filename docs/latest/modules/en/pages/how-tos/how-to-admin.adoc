@@ -46,7 +46,7 @@ Ensure that the model specified in llmModel (e.g., gpt-oss:20b) has been previou
 
 === Select OpenAI via the UI
 
-Navigate to the ‘Global Settings’ -> ‘AI Assistant’ tab.
+Navigate to the 'Global Settings' -> 'AI Assistant' tab.
 
 . Select OpenAI, provide an OpenAI API Key. Head to
   http://platform.openai.com[platform.openai.com] to sign up to OpenAI and
