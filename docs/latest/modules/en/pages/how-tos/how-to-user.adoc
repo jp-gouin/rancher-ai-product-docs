@@ -22,9 +22,9 @@ image::chat-panel.png[Liz chat panel., align="center",  width="50%"]
 
 Liz understands exactly what you are looking at. Any resource with a status badge features an **Ask Liz** button.
 
-1.  Click the **Ask Liz sliding button** icon next to a resource. image:ask-liz.png[Ask Liz button, align="center"]
-2.  The side panel will open with a tailored prompt automatically generated for that specific resource.
-3.  Liz automatically gathers the resource name, cluster ID, and namespace to provide accurate help.
+.  Click the **Ask Liz sliding button** icon next to a resource. image:ask-liz.png[Ask Liz button, align="center"]
+.  The side panel will open with a tailored prompt automatically generated for that specific resource.
+.  Liz automatically gathers the resource name, cluster ID, and namespace to provide accurate help.
 
 image::context.png[Liz context interface showing cluster and namespace awareness., align="center"]
 
