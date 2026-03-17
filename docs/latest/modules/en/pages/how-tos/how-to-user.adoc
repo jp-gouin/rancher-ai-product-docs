@@ -57,11 +57,11 @@ By default, Liz uses "Smart Routing" to send your request to the best specialize
 
 If you want to talk to a specific agent manually:
 
-1. Click the **Agent Selection** icon.
-
+. Click the **Agent Selection** icon.
++
 image:multi-agent-selection.png[Agent selection button, width="50%"]
 
-2. Choose the desired agent from the list.
+. Choose the desired agent from the list.
 
 NOTE: If Liz notices you frequently using the same agent, it may suggest switching to manual mode for that session.
 
