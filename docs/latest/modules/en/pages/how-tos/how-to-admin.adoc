@@ -32,7 +32,7 @@ activeLlm: "ollama"
 
 Update the chart:
 [source,console]
-----
+-----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
 -----
 
