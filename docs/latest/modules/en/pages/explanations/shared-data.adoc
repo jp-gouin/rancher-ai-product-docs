@@ -39,7 +39,7 @@ The following list of actions defines the data collected from the Rancher Manage
 | `listGitRepos`, `getGitRepo`, `analyzeFleetResources`
 |===
 
-These actions fetch data against the environment and share the result with the LLM. 
+These actions fetch data from the environment and share the result with the LLM. 
 **Sensitive data** retrieved through these calls may include:
 
 * Secrets and API keys
