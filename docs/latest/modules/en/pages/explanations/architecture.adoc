@@ -57,7 +57,7 @@ is responsible for:
 
 1. **User Request**: The user submits a query through the UI Extension.
 2. **Supervisor Routing**: {short-project-name} identifies the intent and routes the query, along with the UI context, to the specialized Agent (for example, the Fleet Agent).
-3. **LLM Reasoning**: The specialized Agent’s LLM interprets the request, reasons about the problem, and proposes an action plan.
+3. **LLM Reasoning**: The specialized Agent's LLM interprets the request, reasons about the problem, and proposes an action plan.
 4. **Agent Acting**: If the plan requires external operations, the agent calls the appropriate MCP Server tools using the user's secure token.
 5. **Response Formulation**: The LLM takes the tool outputs and crafts a coherent, human-readable response.
 6. **Final Response**: {short-project-name} delivers the Agent's synthesized answer back to the UI.
