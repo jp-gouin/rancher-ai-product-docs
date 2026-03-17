@@ -5,7 +5,7 @@ include::partial$variables.adoc[]
 :page-revdate: {revdate}
 :description: An introduction to the multi-agent architecture of {project-name}.
 
-The system is designed as a **hierarchical multi-agent ecosystem**. It leverages a central **Supervisor ({short-project-name})** to orchestrate requests across multiple specialized **AI Agents**, each connected to one or more **MCP (Model Context Protocol)** servers.
+The system is designed as a **hierarchical multi-agent ecosystem**. It uses a central **Supervisor ({short-project-name})** to orchestrate requests across multiple specialized **AI Agents**, each connected to one or more **MCP (Model Context Protocol)** servers.
 
 == Components
 
@@ -19,7 +19,7 @@ The system is designed as a **hierarchical multi-agent ecosystem**. It leverages
 
 === Specialized AI Agents (The "Crew")
 
-The Specialized Agents are the workhorses of the system. Each agent is the orchestrator of its specific domain's intelligence. It leverages a Large Language Model (LLM) as its reasoning engine, while the agent itself provides the structure, coordination, and secure execution of actions.
+The Specialized Agents are the workhorses of the system. Each agent is the orchestrator of its specific domain's intelligence. It uses a Large Language Model (LLM) as its reasoning engine, while the agent itself provides the structure, coordination, and secure execution of actions.
 
 * **LLM (Reasoning Engine)**:
 ** Interprets user inputs expressed in natural language.
@@ -56,7 +56,7 @@ is responsible for:
 == How It Works (The Flow)
 
 1. **User Request**: The user submits a query through the UI Extension.
-2. **Supervisor Routing**: {short-project-name} identifies the intent and routes the query, along with the UI context, to the specialized Agent (e.g., the Fleet Agent).
+2. **Supervisor Routing**: {short-project-name} identifies the intent and routes the query, along with the UI context, to the specialized Agent (for example, the Fleet Agent).
 3. **LLM Reasoning**: The specialized Agent’s LLM interprets the request, reasons about the problem, and proposes an action plan.
 4. **Agent Acting**: If the plan requires external operations, the agent calls the appropriate MCP Server tools using the user's secure token.
 5. **Response Formulation**: The LLM takes the tool outputs and crafts a coherent, human-readable response.

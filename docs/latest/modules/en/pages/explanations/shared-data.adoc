@@ -15,7 +15,7 @@ The shared context includes:
 
 * **Cluster ID**: The current cluster being viewed in the Rancher dashboard.
 * **Namespace**: The specific namespace context, if applicable.
-* **Resource Metadata**: Details about the current resource (e.g., a specific Deployment, Node, or Fleet Bundle) shown in the UI.
+* **Resource Metadata**: Details about the current resource (for example, a specific Deployment, Node, or Fleet Bundle) shown in the UI.
 
 This data is bundled with the user's prompt by the **Supervisor** and routed to the appropriate specialized Agent and shared with the LLM provider.
 
@@ -23,7 +23,7 @@ This data is bundled with the user's prompt by the **Supervisor** and routed to 
 
 The Rancher Agent uses specialized tools, exposed through the link:https://github.com/rancher/rancher-ai-mcp?tab=readme-ov-file#available-tools[Rancher MCP server], to retrieve real-time data from the environment. These tools act as the bridge between the AI's reasoning and the actual state of your infrastructure.
 
-The following exhaustive list of actions defines the data collected from the Rancher Manager and downstream clusters:
+The following list of actions defines the data collected from the Rancher Manager and downstream clusters:
 
 [cols="1,2", options="header"]
 |===

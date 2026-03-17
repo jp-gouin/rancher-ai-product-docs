@@ -65,7 +65,7 @@ you choose to deploy.
 [IMPORTANT]
 ====
 
-The exhausitive list of tested models is available xref:/explanations/models.adoc[here]
+The list of tested models is available in the xref:/explanations/models.adoc[Models] documentation.
 
 ====
 
