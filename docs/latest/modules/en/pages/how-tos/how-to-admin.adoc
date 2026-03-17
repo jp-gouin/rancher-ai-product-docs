@@ -13,7 +13,7 @@ include::partial$variables.adoc[]
 Navigate to the Global Settings -> AI Assistant tab.
 
 . Select Ollama as the provider.
-. Enter the Ollama Endpoint (e.g., http://ollama:11434).
+. Enter the Ollama Endpoint (for example, \http://ollama:11434).
 . Once the endpoint is validated, select a model from the available models list. This list is automatically populated based on the models already pulled into your Ollama instance.
 . Click on Apply. The agent will restart, which may take a few seconds.
 +
@@ -31,11 +31,15 @@ activeLlm: "ollama"
 ----
 
 Update the chart:
-[source,bash]
+[source,console]
+----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+-----
 
 [NOTE]
+====
 Ensure that the model specified in llmModel (e.g., gpt-oss:20b) has been previously pulled on your Ollama server using the ollama pull command, otherwise the agent will fail to initialize.
+====
 
 [#openai]
 == Configure OpenAI provider
