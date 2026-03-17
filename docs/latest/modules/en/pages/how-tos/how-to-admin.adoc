@@ -93,7 +93,7 @@ helm upgrade --install --namespace cattle-ai-agent-system --create-namespace --s
 
 === Select Gemini via the UI
 
-Navigate to the ‘Global Settings’ -> ‘AI Assistant’ tab.
+Navigate to the 'Global Settings' -> 'AI Assistant' tab.
 
 . Select Gemini, provide a Google API Key via
   https://aistudio.google.com/[Google AI Studio] or create an API key
