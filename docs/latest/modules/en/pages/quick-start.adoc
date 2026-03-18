@@ -106,7 +106,7 @@ You can change later those settings and providers in Rancher’s “Global Setti
 +
 [source,bash,subs="attributes+"]
 ----
-helm install rancher-ai-agent rancher-ai/agent \
+helm install rancher-ai-agent \
   --namespace cattle-ai-agent-system \
   --create-namespace \
   -f values.yaml {oci-reg}
