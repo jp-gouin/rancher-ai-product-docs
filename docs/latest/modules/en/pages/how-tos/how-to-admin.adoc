@@ -537,7 +537,7 @@ You also need to fetch the Helm chart for the agent:
 
 [source,bash,subs="attributes+"]
 ----
-helm pull {oci-reg} --version 1.0.0
+helm pull {oci-reg} --version 108.0.0+up1.0.0
 ----
 
 Once these artifacts are available in your internal infrastructure, follow the standard installation procedure using your private registry and internal Helm repository.
