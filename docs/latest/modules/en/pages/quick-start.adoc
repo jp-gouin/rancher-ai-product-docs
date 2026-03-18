@@ -86,17 +86,7 @@ Installation of {short-project-name} is a two step process:
 
 === Install the Agent and the MCP on the local cluster
 
-1. Add the Helm repository:
-+
-[source,bash]
-----
-helm repo add rancher-ai https://rancher.github.io/rancher-ai-agent
-helm repo update
-----
-
-2. Deploy the AI Agent chart on the Local cluster.
-+
-Create a `values.yaml` file setting (for Ollama):
+. Create a `values.yaml` file setting (for Ollama):
 +
 [source,yaml]
 ----
@@ -112,13 +102,14 @@ You can change later those settings and providers in Rancher’s “Global Setti
 -> AI Assistant tabs”
 
 ====
+. Install the rancher-ai-agent chart
 +
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
 helm install rancher-ai-agent rancher-ai/agent \
   --namespace cattle-ai-agent-system \
   --create-namespace \
-  -f values.yaml
+  -f values.yaml {oci-reg}
 ----
 
 === Install the UI extension

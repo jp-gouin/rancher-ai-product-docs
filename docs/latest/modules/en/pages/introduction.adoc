@@ -24,11 +24,9 @@ requirements.
 
 == Key Components
 
-* **AI Agent**: The bridge between your LLM and the Rancher MCP. The AI agent
-  component enforces guardrails to help protect your environment from LLM
-  hallucinations. It also contains a built-in RAG (Retrieval-Augmented
-  Generation) system to provide the LLM of your choice with the latest Rancher
-  documentation and knowledge base.
+* **AI Agent**: The domain-specific bridge between the LLM reasoning engine and Rancher MCP servers. 
+  It decomposes and routes complex requests into secure tool calls while enforcing guardrails.
+  It ensures context-aware execution and synthesizes technical data into clear, human-readable responses.
 * **Rancher MCP**: The Rancher Model Context Protocol (MCP) is the component in
   charge of interacting with the Rancher API. It uses the Rancher public API
   mechanism and exposes it using tailored tools to provide the best user

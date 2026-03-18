@@ -78,11 +78,11 @@ end
 
 subgraph "C. Specialized Agents (ReAct)"
 RancherAgent(Rancher Agent)
-FleetAgent(Fleet Agent)
-ProvAgent(Provisioning Agent)
-AppCoAgent(App Collection Agent)
-ObsAgent(Observability Agent)
-SecAgent(Security Agent)
+FleetAgent(Rancher Fleet Agent)
+ProvAgent(Rancher Provisioning Agent)
+AppCoAgent(SUSE Application Collection Agent)
+ObsAgent(SUSE Observability Agent)
+SecAgent(SUSE Security Agent)
 CustomAgent(Custom Agent)
 end
 
@@ -94,7 +94,7 @@ end
 
 subgraph "D. Infrastructure Gateways"
 MCP1[Rancher MCP]
-MCP2[AppCo MCP]
+MCP2[Application Collection MCP]
 MCP_Obs[Observability MCP]
 MCP_Sec[Security MCP]
 MCP4[Third-party MCP]
@@ -102,7 +102,7 @@ end
 
 subgraph "E. Data & APIs"
 RancherAPI[(Rancher / K8s API)]
-AppCoAPI[(AppCo API)]
+AppCoAPI[(Application Collection API)]
 MetricsDB[(SUSE Observability / Metrics)]
 VulnDB[(Security / CVE Scans)]
 ExternalAPI[(External System)]
