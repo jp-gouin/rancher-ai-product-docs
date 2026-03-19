@@ -32,9 +32,22 @@ kubectl logs -n cattle-ai-agent-system -l app=rancher-mcp-server
 You can enable debugs log, using `log.level=debug` during the helm deployment
 of the Agent.
 
-[source,bash]
+[NOTE]
+====
+If you configured the model via the settings page, please report the settings back in the values file before updating.
+====
+
+[source,yaml]
 ----
-helm upgrade -n cattle-ai-agent-system --set log.level=debug rancher-ai-agent rancher-ai/agent
+...
+log:
+  level: debug
+...
+----
+
+[source,bash,subs="attributes+"]
+----
+helm upgrade -n cattle-ai-agent-system -f values.yaml rancher-ai-agent {oci-reg}
 ----
 
 == Rancher behind insecure certificate
@@ -42,7 +55,19 @@ helm upgrade -n cattle-ai-agent-system --set log.level=debug rancher-ai-agent ra
 If your Rancher manager is using a self-signed certificate, please use
 `insecureSkipTls=true` to allow the MCP server to connect to Rancher.
 
-[source,bash]
+[NOTE]
+====
+If you configured the model via the settings page, please report the settings back in the values file before updating.
+====
+
+[source,yaml]
 ----
-helm upgrade -n cattle-ai-agent-system --set insecureSkipTls=true rancher-ai-agent rancher-ai/agent
+...
+insecureSkipTls: true
+...
+----
+
+[source,bash,subs="attributes+"]
+----
+helm upgrade -n cattle-ai-agent-system -f values.yaml rancher-ai-agent {oci-reg}
 ----

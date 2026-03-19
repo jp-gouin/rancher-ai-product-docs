@@ -36,6 +36,12 @@ Update the chart:
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
 -----
 
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
+----
+
 [NOTE]
 ====
 Ensure that the model specified in llmModel (e.g., gpt-oss:20b) has been previously pulled on your Ollama server using the ollama pull command, otherwise the agent will fail to initialize.
@@ -73,6 +79,12 @@ Update the chart:
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
 ----
 
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
+----
+
 === Configure an OpenAI like endpoint
 
 From the UI or via the helm chart you can set an openAI like endpoint.
@@ -86,6 +98,12 @@ image:openai-like-end.png[OpenAI like endpoint configuration screen]
 [source,bash,subs="attributes+"]
 ----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace --set openaiUrl="https://myendpoint.example" rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#gemini]
@@ -109,7 +127,7 @@ Use the following helm values to configure Gemini from the Agent helm chart:
 
 [source,yaml]
 ----
-geminiLlmModel: "gemini-2.0-flash"
+geminiLlmModel: "gemini-2.5-flash"
 googleApiKey: "xxxxxxxxx"
 activeLlm: "gemini"
 ----
@@ -118,6 +136,12 @@ Update the chart:
 [source,bash,subs="attributes+"]
 ----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#bedrock]
@@ -163,6 +187,12 @@ Update the chart:
 [source,bash,subs="attributes+"]
 ----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#multi-agent]
@@ -563,5 +593,11 @@ Update the chart with the new configuration:
 [source,bash,subs="attributes+"]
 ----
 helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
