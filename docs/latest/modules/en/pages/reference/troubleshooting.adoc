@@ -37,6 +37,7 @@ of the Agent.
 If you configured the model via the settings page, please report the settings back in the values file before updating.
 ====
 
+Update the values.yaml
 [source,yaml]
 ----
 ...
@@ -45,6 +46,7 @@ log:
 ...
 ----
 
+Update the chart:
 [source,bash,subs="attributes+"]
 ----
 helm upgrade -n cattle-ai-agent-system -f values.yaml rancher-ai-agent {oci-reg}
@@ -60,6 +62,16 @@ If your Rancher manager is using a self-signed certificate, please use
 If you configured the model via the settings page, please report the settings back in the values file before updating.
 ====
 
+[WARNING]
+====
+If the chart was already deployed. You need to delete the rancher-mcp-server deployment before upgrading the chart.
+[source,bash,subs="attributes+"]
+----
+kubectl delete deployments.apps -n cattle-ai-agent-system rancher-mcp-server
+----
+====
+
+Update the values.yaml
 [source,yaml]
 ----
 ...
@@ -67,6 +79,7 @@ insecureSkipTls: true
 ...
 ----
 
+Update the chart:
 [source,bash,subs="attributes+"]
 ----
 helm upgrade -n cattle-ai-agent-system -f values.yaml rancher-ai-agent {oci-reg}
