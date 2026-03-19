@@ -31,10 +31,16 @@ activeLlm: "ollama"
 ----
 
 Update the chart:
-[source,console]
+[source,bash,subs="attributes+"]
 -----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
 -----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
+----
 
 [NOTE]
 ====
@@ -68,9 +74,15 @@ activeLlm: "openai"
 ----
 
 Update the chart:
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 === Configure an OpenAI like endpoint
@@ -83,9 +95,15 @@ From the UI or via the helm chart you can set an openAI like endpoint.
 +
 image:openai-like-end.png[OpenAI like endpoint configuration screen]
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace --set openaiUrl="https://myendpoint.example" rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace --set openaiUrl="https://myendpoint.example" rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#gemini]
@@ -109,15 +127,21 @@ Use the following helm values to configure Gemini from the Agent helm chart:
 
 [source,yaml]
 ----
-geminiLlmModel: "gemini-2.0-flash"
+geminiLlmModel: "gemini-2.5-flash"
 googleApiKey: "xxxxxxxxx"
 activeLlm: "gemini"
 ----
 
 Update the chart:
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#bedrock]
@@ -127,24 +151,22 @@ helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f 
 
 Navigate to the ‘Global Settings’ -> ‘AI Assistant’ tab.
 
-. Select Bedrock, provide a Bedrock Bearer Token (recommended). Follow
+. Enter a valid AWS Region.
+. Select Bedrock, provide a Bedrock Bearer Token. Follow
   https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys-generate.html[AWS
   procedure] to generate a Bedrock API Key.
-. Enter a valid AWS Region.
-. Select which model to use by going to AWS Bedrock Cross Region Inference tab,
-  copy the Inference profile ID.
-
+. Select which model to use from the list.
++
 [WARNING]
 ====
 
 Choose a model that supports Tools call. Currently the **Anthropic Claude
-Opus** model has been tested.
+Opus** model has been tested. 
+The list of tested models is available in the xref:/explanations/models.adoc[Models] documentation.
 
 ====
-
-. Click on Apply, the agent will restart which may take a few seconds.
 +
-image::bedrock-config.png[AWS Bedrock configuration screen]
+. Click on Apply, the agent will restart which may take a few seconds.
 
 === Select AWS Bedrock via the helm chart
 
@@ -162,9 +184,15 @@ awsBedrock:
 
 Update the chart:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
 [#multi-agent]
@@ -174,12 +202,18 @@ Extend {short-project-name}’s capabilities by configuring specialized AI Agent
 
 These agents allow {short-project-name} to handle specific domains such as GitOps, Cluster Provisioning areas (CAPI resources, K3k), Security and Observability. 
 
+{short-project-name} Liz is deployed with 3 built-in AI agents by default:
+
+* Rancher - the main Rancher Agent
+* Fleet - The Gitops specialist
+* Cluster Provisioning - The cluster specialist
+
 [tabs]
 ====
 SUSE Rancher-Fleet::
 +
 --
-By default, {short-project-name} includes integrated tools for Rancher Fleet. 
+By default, {short-project-name} deploys this built-in Agent. 
 
 Optimise tokens usage, or tailor the user experience for GitOps by deploying a dedicated **Fleet Agent**.
 
@@ -263,7 +297,7 @@ spec:
 SUSE Rancher-Provisioning::
 +
 --
-By default, {short-project-name} includes integrated tools for Rancher Cluster provisioning. 
+By default, {short-project-name} deploys this built-in Agent. 
 
 Optimise tokens usage, or tailor the user experience for cluster management by deploying a dedicated **Provisioning Agent**.
 
@@ -467,7 +501,7 @@ This is ideal for integrating proprietary data or specialized internal tools dir
 |===
 | Field | Description
 | **Name** | The identifying name for your Agent.
-| **Description** | A clear summary of the Agent's purpose. **Include example prompts**, as {short-project-name} uses this description to route user requests to the correct Agent.
+| **Agent Profile** | A clear summary of the Agent's purpose. **Include example prompts**, as {short-project-name} uses this description to route user requests to the correct Agent.
 | **Endpoint** | The accessible URL of your MCP server.
 | **Authentication Type** | Choose between **Rancher Authentication** (internal), **Basic Authentication**, or **None**. _(OAuth2 support coming soon)._
 | **Human Validation Tools** | Select specific tools that require explicit user confirmation before {short-project-name} executes them.
@@ -511,9 +545,9 @@ mcp:
 
 Update the chart with the new configuration:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
 ----
 
 [#airgap]
@@ -527,17 +561,13 @@ The UI extension is part of the official Rancher Prime UI extensions. For detail
 
 === Publishing Images and Charts
 
-To install the agent and its dependencies, you must add the following container images to your `rancher-images.txt` file and publish them to your private registry following the link:https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/air-gapped/publish-images.html[Official Rancher Air-Gapped Publishing Guide]:
-
-* **AI Agent Image:** `ghcr.io/rancher/rancher-ai-agent:v0.1.2-alpha.30`
-* **MCP Server Image:** `ghcr.io/rancher/rancher-ai-mcp:v0.1.2-alpha.10`
+To install the agent and its dependencies, you must follow the link:https://documentation.suse.com/cloudnative/rancher-manager/latest/en/installation-and-upgrade/other-installation-methods/air-gapped/publish-images.html[Official Rancher Air-Gapped Publishing Guide]:
 
 You also need to fetch the Helm chart for the agent:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm repo add rancher-ai https://rancher.github.io/rancher-ai-agent
-helm pull rancher-ai/agent --version 1.0.0
+helm pull {oci-reg} --version 108.0.0+up1.0.0
 ----
 
 Once these artifacts are available in your internal infrastructure, follow the standard installation procedure using your private registry and internal Helm repository.
@@ -560,8 +590,14 @@ The `connectionString` must follow the standard PostgreSQL URI format as describ
 
 Update the chart with the new configuration:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent rancher-ai/agent
+helm upgrade --install --namespace cattle-ai-agent-system --create-namespace -f values.yaml rancher-ai-agent {oci-reg}
+----
+
+Restart the rancher-ai-agent:
+[source,bash,subs="attributes+"]
+----
+kubectl rollout restart deployment -n cattle-ai-agent-system rancher-ai-agent
 ----
 
