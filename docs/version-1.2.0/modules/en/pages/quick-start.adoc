@@ -96,6 +96,8 @@ ollamaUrl: "http://ollama:11434"
 activeLlm: "ollama"
 ----
 +
+For other LLM providers, see the https://github.com/rancher/rancher-ai-agent/blob/main/chart/agent/values.yaml[chart's default `values.yaml`] for all available settings.
++
 [NOTE]
 ====
 
