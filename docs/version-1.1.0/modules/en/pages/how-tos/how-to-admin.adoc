@@ -685,7 +685,7 @@ SUSE Security::
 --
 The **SUSE-Security** agent helps you scan your environment. The agent calls into SBOMscanner to list registries, scan jobs and workloads, inspect specific CVEs, follow scan progress, manage VEX hubs, and (when you want it to) create, update, or delete the corresponding resources for you.
 
-Follow the instruction defined on the offical SBOMscanner link:https://github.com/kubewarden/sbomscanner/blob/main/docs/user-guide/mcp-server.md#liz-rancher-ai-agent[documentation] to set up the integration.
+Follow the instruction defined on the offical SBOMscanner link:https://documentation.suse.com/cloudnative/vulnerability-scanner/latest/en/user-guide/mcp-server.html#_liz_rancher_ai_agent[documentation] to set up the integration.
 
 [NOTE]
 =====
