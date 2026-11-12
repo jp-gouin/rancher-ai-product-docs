@@ -1014,6 +1014,7 @@ This Global role provide a very limited access to Rancher Manager.
 It grant access to Agent endpoint running in the local cluster.
 ====
 
+[#rbac-restrict-agents]
 === Restrict access to specific agents
 
 The **{short-project-name} (Rancher AI Assistant) User** role gives access to all agents, including custom agents. Users only see the agents that they can access.
