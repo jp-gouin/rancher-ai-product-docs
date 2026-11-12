@@ -1020,14 +1020,10 @@ The **{short-project-name} (Rancher AI Assistant) User** role gives access to al
 
 To limit a user to specific agents, create a new **Global Role**:
 
-. Export the existing role to a file:
-+
-[source,bash]
-----
-kubectl get globalrole liz-user --output yaml > liz-restricted.yaml
-----
-. In `liz-restricted.yaml`, change `metadata.name` and `displayName`.
-. Remove `resourceVersion`, `uid`, `creationTimestamp`, `labels` and `annotations` from `metadata`.
+. Navigate to **Users & Authentication** > **Role Templates** > **Global**.
+. Find the **{short-project-name} (Rancher AI Assistant) User** role and select **Clone** from its menu.
+. Enter a new name and a description.
+. Click **Edit as YAML**.
 . Replace the `aiagentconfigs` rule with a rule that lists the allowed agents:
 +
 [source,yaml]
@@ -1043,12 +1039,7 @@ kubectl get globalrole liz-user --output yaml > liz-restricted.yaml
     - rancher
     - fleet
 ----
-. Create the new role in the local cluster:
-+
-[source,bash]
-----
-kubectl apply --filename liz-restricted.yaml
-----
+. Click **Create**.
 . Assign the new role to the user instead of the **{short-project-name} (Rancher AI Assistant) User** role.
 
 Access granted to a user and to their groups is combined. Administrators see all agents.
